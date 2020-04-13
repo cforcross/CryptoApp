@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+   
+   {% if not_found %}
+       
+    <h1>Type in Search Box</h1>
+    {% else %}
+        
+        {% if crypto.Response %}
+           <h3>Sorry {{quote}} doen't exist try again</h3> 
+        {% endif %}
+            
+      
+  <div>
+
+    {% for key,value in crypto.DISPLAY.items  %}
+   
+    <strong>Name: </strong>  {{key}} <br>
+    <strong>Price: </strong> {{value.USD.PRICE}}><br>
+    <strong>Day High: </strong> {{value.USD.HIGHDAY}}<br>
+    <strong>Day Low: </strong> {{value.USD.LOWDAY}}<br>
+    <strong>Markey Cap: </strong> {{value.USD.MKTCAP}}<br>
+   
+    {% endfor %}
+    {% endif %}
+
+  </div>
+
+
+{% endblock content %}
